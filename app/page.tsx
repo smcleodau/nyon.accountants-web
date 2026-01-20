@@ -21,20 +21,20 @@ export default function Home() {
         <div className="relative h-screen min-h-[600px] bg-[#f6f6f6] rounded-xl overflow-hidden shadow-[0_0_0_1px_rgba(0,0,0,0.05)]">
           {/* Hero Content Area */}
           <div className="relative h-full overflow-hidden">
-            {/* Hero Image with Parallax */}
+            {/* Hero Video with Parallax */}
             <div
               className="absolute inset-0 z-0"
               style={{ transform: `translateY(${scrollY * 0.3}px)` }}
             >
-              <Image
-                src="/images/hero/hero-1920.webp"
-                alt="Alpine mountains overlooking Nyon - Elevated financial clarity"
-                fill
-                priority
-                quality={90}
-                className="object-cover object-center"
-                sizes="100vw"
-              />
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              >
+                <source src="/images/hero/hero-video.mp4" type="video/mp4" />
+              </video>
 
               {/* Gradient Overlay for Text Readability */}
               <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
