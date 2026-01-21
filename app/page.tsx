@@ -6,10 +6,16 @@ import { useEffect, useState } from 'react';
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
+  const [videoSrc, setVideoSrc] = useState('/images/hero/hero-video.mp4');
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
+
+    // Detect mobile device and use optimized video
+    const isMobile = window.innerWidth < 768;
+    setVideoSrc(isMobile ? '/images/hero/hero-video-mobile.mp4' : '/images/hero/hero-video.mp4');
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -33,7 +39,7 @@ export default function Home() {
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover object-center"
               >
-                <source src="/images/hero/hero-video.mp4" type="video/mp4" />
+                <source src={videoSrc} type="video/mp4" />
               </video>
 
               {/* Gradient Overlay for Text Readability */}
